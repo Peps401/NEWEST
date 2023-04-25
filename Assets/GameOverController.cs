@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameOverController : MonoBehaviour
 {
-
+    public void InitializeController(){
+        gameObject.SetActive(false);
+    }
+    
     public void Setup (){
         gameObject.SetActive(true);
     }

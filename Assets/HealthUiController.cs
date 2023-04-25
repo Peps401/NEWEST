@@ -5,24 +5,26 @@ using TMPro;
 using UnityEngine.UI;
 
 public class HealthUiController : MonoBehaviour
-{
-    public TMP_Text healthText;
-    
+{    
     public Slider slider;
     public Gradient gradient;
     public Image fill;
 
-    public void SetMaxHealth(int newValue){
-        slider.maxValue = newValue;
-        slider.value = newValue;
-
-        fill.color = gradient.Evaluate(1f);
+    public void InitializeController(int initHealth){
+        slider.minValue = 0;
+        slider.maxValue = 100;
+        SetHealth(initHealth);
     }
     
-    public void SetHealth(int newValue){
-        Debug.Log(newValue);
-        healthText.text = newValue.ToString();
-        //slider.value = newValue; 
+    public void SetHealth(float newValue){
+        if(newValue<0){
+            newValue = 0;
+        }
+        if(newValue>100){
+            newValue=100;
+        }
+
+        slider.value = newValue * (slider.maxValue-slider.minValue); 
 
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }

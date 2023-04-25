@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3507527884715669910}
   - component: {fileID: 3507527884715669905}
   - component: {fileID: -8692849045273250046}
+  - component: {fileID: 7729978151433147955}
+  - component: {fileID: 6720941487613710677}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -103,6 +105,101 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVisibility: 0
+--- !u!50 &7729978151433147955
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507527884715669911}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!66 &6720941487613710677
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507527884715669911}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 8502017187408294102}
+    m_ColliderPaths:
+    - - X: -4010000
+        Y: 5000000
+      - X: -5010000
+        Y: 5000000
+      - X: -5010000
+        Y: -5000000
+      - X: -4010000
+        Y: -5000000
+  - m_Collider: {fileID: 6541006008298375035}
+    m_ColliderPaths:
+    - - X: 4989000
+        Y: 4290000
+      - X: 4989000
+        Y: 5290000
+      - X: -5011000
+        Y: 5289999
+      - X: -5011000
+        Y: 4289999
+  - m_Collider: {fileID: 5713741250215004156}
+    m_ColliderPaths:
+    - - X: 4998000
+        Y: 5000000
+      - X: 3998000
+        Y: 5000000
+      - X: 3998000
+        Y: -5000000
+      - X: 4998000
+        Y: -5000000
+  - m_Collider: {fileID: 1914696126049602250}
+    m_ColliderPaths:
+    - - X: 4990000
+        Y: -5049999
+      - X: 4990000
+        Y: -4049999
+      - X: -5010000
+        Y: -4050000
+      - X: -5010000
+        Y: -5050000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: -0.501, y: -0.5049707}
+      - {x: 0.499, y: -0.5049706}
+      - {x: 0.4990294, y: -0.5}
+      - {x: 0.4998, y: -0.4999707}
+      - {x: 0.4997707, y: 0.5}
+      - {x: 0.4989, y: 0.5000294}
+      - {x: 0.4988707, y: 0.529}
+      - {x: -0.5011, y: 0.5289706}
+    - - {x: -0.4009706, y: -0.405}
+      - {x: -0.4009706, y: 0.4289999}
+      - {x: 0.3998, y: 0.4289706}
+      - {x: 0.39977062, y: -0.4049999}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
 --- !u!1 &9005490051043292389
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
+--- !u!61 &1914696126049602250 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 378967108503839275, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
+  m_PrefabInstance: {fileID: 2292333759303608545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2095357771048324974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 199343253971920783, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
@@ -258,6 +360,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 199343253971920783, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
   m_PrefabInstance: {fileID: 5334819385244804567}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &5713741250215004156 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 378967108503839275, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
+  m_PrefabInstance: {fileID: 5334819385244804567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6882642471902225744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,6 +422,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
+--- !u!61 &6541006008298375035 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 378967108503839275, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
+  m_PrefabInstance: {fileID: 6882642471902225744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6719436060228731615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 199343253971920783, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
@@ -380,5 +492,10 @@ PrefabInstance:
 --- !u!4 &8249278023749924210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 199343253971920783, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
+  m_PrefabInstance: {fileID: 8124325527500690173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &8502017187408294102 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 378967108503839275, guid: af6972afa34b2d04bba6ab8c70ab63bd, type: 3}
   m_PrefabInstance: {fileID: 8124325527500690173}
   m_PrefabAsset: {fileID: 0}

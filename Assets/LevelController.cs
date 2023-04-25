@@ -6,14 +6,16 @@ public class LevelController : MonoBehaviour
 {
     public LevelUiController levelUiController;
     public CharacterController characterController;
-    private int timeLeft = 120;
+    public int maxTime = 120;
+    public float timeDamagePerc = 0.3f;
+    public int damageFromTime = 1;
+    private int timeLeft;
 
     private float timePassed = 0.0f;
 
-    void Awake(){
-        characterController.levelController = this;
-        levelUiController.RefreshTimer(timeLeft);
-        UpdateHealth(characterController.health);
+    void Awake()
+    {
+        InitializeController();
     }
 
     void Update()
@@ -24,11 +26,27 @@ public class LevelController : MonoBehaviour
             timeLeft--;
             timePassed = 0.0f;
             levelUiController.RefreshTimer(timeLeft);
+
+            if(timeLeft/maxTime < timeDamagePerc){
+                characterController.LoseHealth(damageFromTime);
+            }
         }
     }
 
-    public void UpdateHealth(int newValue){
-        levelUiController.SetHealth(newValue);
+    void InitializeController()
+    {
+        timeLeft = maxTime;
+        characterController.InitializeController(this, true);
+        levelUiController.InitializeController(timeLeft, characterController.health);
+    }
+
+    public void UpdateHealth(int newValue)
+    {
+        levelUiController.SetHealth(newValue/characterController.maxHealth);
+        if(newValue == 0){
+            levelUiController.StartGameOverScreen();
+            characterController.movementAllowed = false;
+        }
     }
 
 }
