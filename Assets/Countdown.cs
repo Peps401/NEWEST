@@ -5,10 +5,19 @@ using UnityEngine.UI;
 
 public class Countdown : MonoBehaviour
 {
-    public float timeStart = 60;
-    public float tracker = 55;
+    public float timeStart;
+    public float tracker;
     public Text textBox;
 
+    public LevelController levelController;
+
+    int x;
+
+    public void InitializeController(LevelController levelController, int maxTime){
+        this.levelController = levelController;
+        timeStart = maxTime;
+        tracker = timeStart - 5f;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +30,13 @@ public class Countdown : MonoBehaviour
     {
         timeStart -= Time.deltaTime;
         textBox.text = Mathf.Round(timeStart).ToString();
+        x = levelController.roomsDiscovered;
+        if(x == 6){
+            Every5SecLoseHealth(timeStart);
+        }
     }
 
-    void Every5SecLoseHealth(Time time){
+    void Every5SecLoseHealth(float time){
         if(timeStart == tracker){
             tracker -= 5f;
             gameObject.SendMessage("LoseHealth", 10); 

@@ -6,7 +6,7 @@ public class CharacterController : MonoBehaviour
 {
     public float speed = 4.0f;
     public int health = 100;
-    public int maxHealth = 100;
+    public int maxHealth = 100; 
 
     private LevelController levelController;
 

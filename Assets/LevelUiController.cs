@@ -16,6 +16,8 @@ public class LevelUiController : MonoBehaviour
         RefreshTimer(initTimer);
         healthUiController.InitializeController(initHealth);
         gameOverController.InitializeController();
+
+        GameObject.FindGameObjectWithTag("Enemy").SetActive(false);
     }
 
     public void RefreshTimer(int newValue){
