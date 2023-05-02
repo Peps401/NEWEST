@@ -6,11 +6,12 @@ public class RoomController : MonoBehaviour
 {
     public bool initialVisibility = false;
 
-    public LevelController levelController;
+    private LevelController levelController;
     
     // Start is called before the first frame update
-    void Start()
+    public void InitializeController(LevelController levelController)
     {
+        this.levelController = levelController;
         gameObject.SetActive(initialVisibility);
         DoorController[] doorControllers = GetComponentsInChildren<DoorController>();
         foreach (DoorController door in doorControllers)
@@ -21,14 +22,12 @@ public class RoomController : MonoBehaviour
 
     public void Toggle(bool visible){
         if(gameObject.activeSelf == false){
-            int x = levelController.roomsDiscovered;
-            levelController.roomsDiscovered += 1;
-            Debug.Log("Rooms discovered" + x);
             gameObject.SetActive(visible);
+            levelController.NewRoomDiscovered();
         }
+    }
 
-        if(levelController.roomsDiscovered == 6){
-            GameObject.FindGameObjectWithTag("Enemy").SetActive(visible);
-        }
+    public bool IsActive(){
+        return this.gameObject.activeSelf;
     }
 }

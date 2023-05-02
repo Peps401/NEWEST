@@ -2,44 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Countdown : MonoBehaviour
 {
-    public float timeStart;
-    public float tracker;
-    public Text textBox;
+    public TMP_Text textBox;
 
-    public LevelController levelController;
+    private LevelController levelController;
+    private int timeLeft;
+    private int tracker;
+    private bool loseHealthTime = false;
 
-    int x;
+    float timePassed = 0.0f;
 
-    public void InitializeController(LevelController levelController, int maxTime){
+    public void InitializeController(LevelController levelController, int maxTime)
+    {
         this.levelController = levelController;
-        timeStart = maxTime;
-        tracker = timeStart - 5f;
+        timeLeft = maxTime;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        textBox.text = timeStart.ToString();
+        textBox.text = timeLeft.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeStart -= Time.deltaTime;
-        textBox.text = Mathf.Round(timeStart).ToString();
-        x = levelController.roomsDiscovered;
-        if(x == 6){
-            Every5SecLoseHealth(timeStart);
+        timePassed += Time.deltaTime;
+        if (timePassed >= 1.0f)
+        {
+            timeLeft--;
+            timePassed = 0.0f;
+            textBox.text = timeLeft.ToString();
+        }
+
+        if (loseHealthTime)
+        {
+            Every5SecLoseHealth();
+        }
+        if (timeLeft == 0){
+            levelController.GameLost();
         }
     }
 
-    void Every5SecLoseHealth(float time){
-        if(timeStart == tracker){
-            tracker -= 5f;
-            gameObject.SendMessage("LoseHealth", 10); 
+    public void AllRoomsDiscovered()
+    {
+        tracker = timeLeft - 5;
+        loseHealthTime = true;
+    }
+
+    void Every5SecLoseHealth()
+    {
+        if (timeLeft == tracker)
+        {
+            tracker -= 5;
+            levelController.GetCharacterController().LoseHealth(10);
         }
     }
 }

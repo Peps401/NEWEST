@@ -24,6 +24,8 @@ public class HealthUiController : MonoBehaviour
             newValue=100;
         }
 
+        Debug.Log("Current health: " + newValue.ToString());
+
         slider.value = newValue * (slider.maxValue-slider.minValue); 
 
         fill.color = gradient.Evaluate(slider.normalizedValue);

@@ -61,6 +61,8 @@ public class CharacterController : MonoBehaviour
 
     public void LoseHealth(int healthToLose)
     {
+        Debug.Log("HTL" + healthToLose.ToString());
+        Debug.Log("HP" + health.ToString());
         health -= healthToLose;
         levelController.UpdateHealth(health);
     }
